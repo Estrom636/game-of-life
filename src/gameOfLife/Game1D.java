@@ -8,7 +8,7 @@ public class Game1D {
 		map = preFill(map);
 		String[] firstMap = map;
 		printMap(map);
-		for(int i = 0; i < 150; i++) {
+		for(int i = 0; i < 167; i++) {
 			delay(0.1);
 			map = nextMap(map);
 			printMap(map);
