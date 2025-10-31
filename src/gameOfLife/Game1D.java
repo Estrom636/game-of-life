@@ -33,15 +33,24 @@ public class Game1D {
 			} else {
 				numAlive = Integer.parseInt(map[i-1]) + Integer.parseInt(map[i+1]);
 			}
-			if(numAlive == 0) {
-				nextMap[i] = "0";
+			if(map[i].equals("1")) { 
+				if(numAlive == 0) { 
+					nextMap[i] = "0"; 
+				}
+				if(numAlive == 1) { 
+					nextMap[i] = "1"; 
+				}
+				if(numAlive == 2) { 
+					nextMap[i] = "0";
+				} 
+			} else { 
+				if(numAlive == 2) { 
+					nextMap[i] = "1"; 
+				} else { 
+					nextMap[i] = "0"; 
+				} 
 			}
-			if(numAlive == 1) {
-				nextMap[i] = "1";
-			}
-			if(numAlive == 2) {
-				nextMap[i] = "0";
-			}
+			if (Math.random() < 0.05) nextMap[i] = "1";
 		}
 		return nextMap;
 	}
@@ -53,7 +62,7 @@ public class Game1D {
 	 */
 	public static String[] preFill(String[] map) {
 		for(int i = 0; i < map.length; i++) {
-			int value = (int) (Math.random() * 10) - 8;
+			int value = (int) (Math.random() * 2);
 			if(value < 0) value = 0;
 			map[i] = Integer.toString(value);
 		}
