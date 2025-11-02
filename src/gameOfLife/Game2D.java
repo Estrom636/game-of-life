@@ -7,6 +7,33 @@ public class Game2D {
 	public static void main(String[] args) {
 		map = preFill(map);
 		printMap(map);
+		map = nextMap(map);
+		printMap(map);
+	}
+	
+	public static String[][] nextMap(String[][] map){
+		int[][] mapI = toInt(map);
+		String[][] nextMap = new String[map.length][map[0].length];
+		int rows = map.length;
+		int cols = map[0].length;
+		for(int i = 0; i < map.length; i++) {
+			for(int j = 0; j < map[i].length; j++) {
+				int count = 0;
+				for(int di = -1; di <= 1; di++) {
+					for(int dj = -1; dj <= 1; dj++) {
+						if(di != 0 && dj != 0) {
+							int ni = (i + di + rows) % rows;
+							int nj = (j + dj + cols) % cols;
+							if(mapI[ni][nj] == 1) {
+								count++;
+							}
+						}
+					}
+				}
+				//TODO add the code for new cell
+			}
+		}
+		return nextMap;
 	}
 	
 	/* 
@@ -32,11 +59,33 @@ public class Game2D {
 	public static void printMap(String[][] map) {
 		for(int i = 0; i < map.length; i++) {
 			for(int j = 0; j < map[i].length; j++) {
-				System.out.print(map[i][j]);
-				//System.out.print((map[i][j].equals("1")) ? "&" : " ");
+				//System.out.print(map[i][j]);
+				System.out.print((map[i][j].equals("1")) ? "@" : " ");
 			}
 			System.out.println();
 		}
 		System.out.println();
 	}
+	
+	//TODO add comment
+	public static int[][] toInt(String[][] map){
+		int[][] newMap = new int[map.length][map[0].length];
+		for(int i = 0; i < map.length; i++) {
+			for(int j = 0; j < map[i].length; j++) {
+				newMap[i][j] = Integer.parseInt(map[i][j]);
+			}
+		}
+		return newMap;
+	}
+	
+	//TODO add comment
+	public static String[][] toString(int[][] map){
+		String[][] newMap = new String[map.length][map[0].length];
+		for(int i = 0; i < map.length; i++) {
+			for(int j = 0; j < map[i].length; j++) {
+				newMap[i][j] = Integer.toString(map[i][j]);
+			}
+		}
+		return newMap;
+	}	
 }
