@@ -7,8 +7,11 @@ public class Game2D {
 	public static void main(String[] args) {
 		map = preFill(map);
 		printMap(map);
-		map = nextMap(map);
-		printMap(map);
+		for(int i = 0; i < 167; i++) {
+			delay(0.1);
+			map = nextMap(map);
+			printMap(map);
+		}
 	}
 	
 	public static String[][] nextMap(String[][] map){
@@ -21,7 +24,7 @@ public class Game2D {
 				int count = 0;
 				for(int di = -1; di <= 1; di++) {
 					for(int dj = -1; dj <= 1; dj++) {
-						if(di != 0 && dj != 0) {
+						if(!(di == 0 && dj == 0)) {
 							int ni = (i + di + rows) % rows;
 							int nj = (j + dj + cols) % cols;
 							if(mapI[ni][nj] == 1) {
@@ -30,7 +33,19 @@ public class Game2D {
 						}
 					}
 				}
-				//TODO add the code for new cell
+				if(mapI[i][j] == 1) {
+					if(count == 2 || count == 3) {
+						nextMap[i][j] = "1";
+					} else {
+						nextMap[i][j] = "0";
+					}
+				} else {
+					if(count == 3) {
+						nextMap[i][j] = "1";
+					} else {
+						nextMap[i][j] = "0";
+					}
+				}
 			}
 		}
 		return nextMap;
@@ -67,7 +82,11 @@ public class Game2D {
 		System.out.println();
 	}
 	
-	//TODO add comment
+	/*
+	 * Convert the given map from int to string
+	 * @param map > the map to convert
+	 * @return newMap > the converted map
+	 */
 	public static int[][] toInt(String[][] map){
 		int[][] newMap = new int[map.length][map[0].length];
 		for(int i = 0; i < map.length; i++) {
@@ -78,7 +97,11 @@ public class Game2D {
 		return newMap;
 	}
 	
-	//TODO add comment
+	/*
+	 * Convert the given map from int to string
+	 * @param map > the map to convert
+	 * @return newMap > the converted map
+	 */
 	public static String[][] toString(int[][] map){
 		String[][] newMap = new String[map.length][map[0].length];
 		for(int i = 0; i < map.length; i++) {
@@ -87,5 +110,18 @@ public class Game2D {
 			}
 		}
 		return newMap;
-	}	
+	}
+	
+	/*
+	 * time delay based on input
+	 * @param sec > delay time in seconds
+	 */
+	public static void delay(double sec) {
+		long milliseconds = (long)(sec * 1000);
+		try {
+		    Thread.sleep(milliseconds);
+		} catch (InterruptedException e) {
+		    e.printStackTrace();
+		}
+	}
 }
