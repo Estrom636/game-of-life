@@ -81,6 +81,7 @@ public class Game1D {
 		System.out.println();
 	}
 	
+	//TODO write comment
 	public static void printStats(String[] map) {
 		int numAlive = 0;
 		int numDead = 0;

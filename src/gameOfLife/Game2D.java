@@ -2,16 +2,19 @@ package gameOfLife;
 
 public class Game2D {
 	
-	static String[][] map = new String[10][10];
+	static String[][] map = new String[1000][1000];
 
 	public static void main(String[] args) {
 		map = preFill(map);
+		String[][] firstMap = map;
 		printMap(map);
 		for(int i = 0; i < 167; i++) {
 			delay(0.1);
 			map = nextMap(map);
 			printMap(map);
 		}
+		printStats(firstMap);
+		printStats(map);
 	}
 	
 	public static String[][] nextMap(String[][] map){
@@ -110,6 +113,27 @@ public class Game2D {
 			}
 		}
 		return newMap;
+	}
+	
+	//TODO write comment
+	public static void printStats(String[][] map) {
+		int numAlive = 0;
+		int numDead = 0;
+		int percentAlive = 0;
+		
+		for(int i = 0; i < map.length; i++) {
+			for(int j = 0; j < map[i].length; j++) {
+				int num = Integer.parseInt(map[i][j]);
+				if(num == 0) numDead++;
+				if(num == 1) numAlive++;
+			}
+		}
+		
+		percentAlive = (int) (((double)numAlive / (map.length * map[0].length)) * 100);
+		
+		System.out.print("Number Alive: " + numAlive);
+		System.out.print(" Number Dead: " + numDead);
+		System.out.println(" Percent Alive: " + percentAlive + "%");
 	}
 	
 	/*
