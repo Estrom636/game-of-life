@@ -81,7 +81,11 @@ public class Game1D {
 		System.out.println();
 	}
 	
-	//TODO write comment
+	/*
+	 * prints out the statistics of the given map
+	 * stats: number alive, number dead, percent alive
+	 * @param map > the map for statistics
+	 */
 	public static void printStats(String[] map) {
 		int numAlive = 0;
 		int numDead = 0;
