@@ -70,8 +70,15 @@ public class Game1Dc {
 	 */
 	public static void printMap(int[] map) {
 		for(int i = 0; i < map.length; i++) {
-			System.out.print(map[i]);
-			//System.out.print((map[i] > 0)? "$" : " ");
+			if(map[i] == 9) {
+				System.out.print("#");
+			} else if(map[i] > 9/2) {
+				System.out.print("=");
+			} else if(map[i] > 0) {
+				System.out.print("-");
+			} else {
+				System.out.print(" ");
+			}
 		}
 		System.out.println();
 	}
