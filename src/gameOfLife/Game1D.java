@@ -50,7 +50,7 @@ public class Game1D {
 					nextMap[i] = "0"; 
 				} 
 			}
-			if (Math.random() < 0.05) nextMap[i] = "1";
+			//if (Math.random() < 0.05) nextMap[i] = "1";
 		}
 		return nextMap;
 	}
