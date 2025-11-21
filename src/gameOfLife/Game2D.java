@@ -2,7 +2,7 @@ package gameOfLife;
 
 public class Game2D {
 	
-	static String[][] map = new String[1000][1000];
+	static String[][] map = new String[50][50];
 
 	public static void main(String[] args) {
 		map = preFill(map);
@@ -62,7 +62,7 @@ public class Game2D {
 	public static String[][] preFill(String[][] map){
 		for(int i = 0; i < map.length; i++) {
 			for(int j = 0; j < map[i].length; j++) {
-				int value = (int) (Math.random() * 2) - 0;
+				int value = (int) (Math.random() * 20) - 18;
 				if(value < 0) value = 0;
 				map[i][j] = Integer.toString(value);
 			}
@@ -123,7 +123,7 @@ public class Game2D {
 	public static void printStats(String[][] map) {
 		int numAlive = 0;
 		int numDead = 0;
-		int percentAlive = 0;
+		double percentAlive = 0;
 		
 		for(int i = 0; i < map.length; i++) {
 			for(int j = 0; j < map[i].length; j++) {
@@ -133,7 +133,7 @@ public class Game2D {
 			}
 		}
 		
-		percentAlive = (int) (((double)numAlive / (map.length * map[0].length)) * 100);
+		percentAlive = (((double)numAlive / (map.length * map[0].length)) * 100);
 		
 		System.out.print("Number Alive: " + numAlive);
 		System.out.print(" Number Dead: " + numDead);
