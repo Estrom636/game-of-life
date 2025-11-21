@@ -8,7 +8,7 @@ public class Game2D {
 		map = preFill(map);
 		String[][] firstMap = map;
 		printMap(map);
-		for(int i = 0; i < 167; i++) {
+		for(int i = 0; i < 1670; i++) {
 			delay(0.1);
 			map = nextMap(map);
 			printMap(map);
@@ -62,7 +62,7 @@ public class Game2D {
 	public static String[][] preFill(String[][] map){
 		for(int i = 0; i < map.length; i++) {
 			for(int j = 0; j < map[i].length; j++) {
-				int value = (int) (Math.random() * 20) - 18;
+				int value = (int) (Math.random() * 2) - 0;
 				if(value < 0) value = 0;
 				map[i][j] = Integer.toString(value);
 			}
