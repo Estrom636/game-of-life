@@ -2,19 +2,29 @@ package gameOfLife;
 
 public class Game2D {
 	
-	static String[][] map = new String[50][50];
+	static String[][] map = new String[10][10];
 
 	public static void main(String[] args) {
-		map = preFill(map);
-		String[][] firstMap = map;
-		printMap(map);
-		for(int i = 0; i < 1670; i++) {
-			delay(0.1);
-			map = nextMap(map);
+		for(int l = 0; l < 10; l++) {
+			map = preFill(map);
+			String[][] firstMap = map;
+			String[][] map1 = map;
+			String[][] map2 = map;
 			printMap(map);
+			for(int i = 0; i < 1670; i++) {
+				delay(0.1);
+				map = nextMap(map);
+				printMap(map);
+				map2 = map1;
+				map1 = map;
+				if(equals(map, map2)) {
+					break;
+				}
+			}
+			printStats(firstMap);
+			printStats(map);
+			delay(5);
 		}
-		printStats(firstMap);
-		printStats(map);
 	}
 	
 	public static String[][] nextMap(String[][] map){
@@ -113,6 +123,19 @@ public class Game2D {
 			}
 		}
 		return newMap;
+	}
+	
+	/*
+	 * 
+	 */
+	public static boolean equals(String[][] map, String[][] map2) {
+		boolean equal = true;
+		for(int i = 0; i < map.length; i++) {
+			for(int j = 0; j < map[i].length; j++) {
+				if(!map[i][j].equals(map2[i][j])) equal = false;
+			}
+		}
+		return equal;
 	}
 	
 	/*
