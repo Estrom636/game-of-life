@@ -11,7 +11,7 @@ public class Game2D {
 			String[][] map1 = map;
 			String[][] map2 = map;
 			printMap(map);
-			for(int i = 0; i < 1670; i++) {
+			for(int i = 0; i < 100; i++) {
 				delay(0.1);
 				map = nextMap(map);
 				printMap(map);
