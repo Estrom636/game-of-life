@@ -1,17 +1,26 @@
 package gameOfLife;
 
+import java.util.Arrays;
+
 public class Game1D {
 	
-	static String[] map = new String[250];
+	static String[] map = new String[50];
 	
 	public static void main(String arg[]) {
 		map = preFill(map);
 		String[] firstMap = map;
 		printMap(map);
+		String[] map2 = map;
+		String[] map3;
 		for(int i = 0; i < 100; i++) {
 			delay(0.1);
 			map = nextMap(map);
 			printMap(map);
+			map3 = map2;
+			map2 = map;
+			if(Arrays.equals(map, map3)) {
+				break;
+			}
 		}
 		printStats(firstMap);
 		printStats(map);
