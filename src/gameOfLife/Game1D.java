@@ -2,13 +2,13 @@ package gameOfLife;
 
 public class Game1D {
 	
-	static String[] map = new String[1000];
+	static String[] map = new String[250];
 	
 	public static void main(String arg[]) {
 		map = preFill(map);
 		String[] firstMap = map;
 		printMap(map);
-		for(int i = 0; i < 167; i++) {
+		for(int i = 0; i < 100; i++) {
 			delay(0.1);
 			map = nextMap(map);
 			printMap(map);
@@ -50,7 +50,6 @@ public class Game1D {
 					nextMap[i] = "0"; 
 				} 
 			}
-			//if (Math.random() < 0.05) nextMap[i] = "1";
 		}
 		return nextMap;
 	}
@@ -75,7 +74,6 @@ public class Game1D {
 	 */
 	public static void printMap(String[] map) {
 		for(int i = 0; i < map.length; i++) {
-			//System.out.print(map[i]);
 			System.out.print((map[i].equals("1")) ? "&" : " ");
 		}
 		System.out.println();
