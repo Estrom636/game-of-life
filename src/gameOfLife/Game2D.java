@@ -85,12 +85,23 @@ public class Game2D {
 	 * @param map > the map to print out
 	 */
 	public static void printMap(String[][] map) {
+		for(int t = 0; t < map.length + 2; t++) {
+			System.out.print("+");
+		}
+		System.out.println();
+		
 		for(int i = 0; i < map.length; i++) {
+			System.out.print("+");
 			for(int j = 0; j < map[i].length; j++) {
 				//System.out.print(map[i][j]);
 				System.out.print((map[i][j].equals("1")) ? "@" : " ");
 			}
+			System.out.print("+");
 			System.out.println();
+		}
+		
+		for(int t = 0; t < map.length + 2; t++) {
+			System.out.print("+");
 		}
 		System.out.println();
 	}
